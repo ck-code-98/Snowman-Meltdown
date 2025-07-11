@@ -25,7 +25,7 @@ def play_game():
                 return play_game()
             elif replay_answer == 'q':
                 print("Thank you for playing!")
-                return
+                return None
 
         if mistake_counter >= 3:
             print('Game over! The snowman melted!')
@@ -34,7 +34,7 @@ def play_game():
                 return play_game()
             elif replay_answer == 'q':
                 print("Thank you for playing!")
-                return
+                return None
 
         while True:
             guess = input("Guess a letter: ").lower()
