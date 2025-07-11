@@ -22,19 +22,28 @@ def play_game():
             print('Congratulations! You guessed the word!')
             replay_answer = input("Enter 'R' to replay or 'Q' to quit: ").lower()
             if replay_answer == 'r':
-                continue
+                return play_game()
             elif replay_answer == 'q':
-                break
+                print("Thank you for playing!")
+                return
 
         if mistake_counter >= 3:
             print('Game over! The snowman melted!')
             replay_answer = input("Enter 'R' to replay or 'Q' to quit: ").lower()
             if replay_answer == 'r':
-                continue
+                return play_game()
             elif replay_answer == 'q':
-                break
+                print("Thank you for playing!")
+                return
 
-        guess = input("Guess a letter: ").lower()
+        while True:
+            guess = input("Guess a letter: ").lower()
+            if len(guess) != 1 or not guess.isalpha():
+                print("Please enter a single letter (a-z).")
+            elif guess in guessed_letters:
+                print("You already guessed this letter. Try another one.")
+            else:
+                break
         guessed_letters.append(guess)
         if guess not in secret_word:
             mistake_counter += 1
