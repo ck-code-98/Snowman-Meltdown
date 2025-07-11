@@ -17,12 +17,23 @@ def play_game():
 
     while True:
         display_word = display_game_state(mistake_counter, secret_word, guessed_letters)
+
         if '_' not in display_word:
             print('Congratulations! You guessed the word!')
-            break
+            replay_answer = input("Enter 'R' to replay or 'Q' to quit: ").lower()
+            if replay_answer == 'r':
+                continue
+            elif replay_answer == 'q':
+                break
+
         if mistake_counter >= 3:
             print('Game over! The snowman melted!')
-            break
+            replay_answer = input("Enter 'R' to replay or 'Q' to quit: ").lower()
+            if replay_answer == 'r':
+                continue
+            elif replay_answer == 'q':
+                break
+
         guess = input("Guess a letter: ").lower()
         guessed_letters.append(guess)
         if guess not in secret_word:
